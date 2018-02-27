@@ -1,28 +1,32 @@
-# blank exception without fetching exception obeject
+import traceback
+
+def divide_by_zero():
+    return 5 / 0
+
+
+# blank exception without fetching exception object
 try:
-    support = 0
-    test = 5 / support
+    divide_by_zero()
 except:
     print('something happened')
 
 # catching exception by type
 try:
-    support = 0
-    test = 5 / support
+    divide_by_zero()
 except Exception:
     print('exception was thrown')
 
 # catching exception with content
 try:
-    support = 0
-    test = 5 / support
+    divide_by_zero()
+except ZeroDivisionError:
+    print('Quit dividing by zero')
 except Exception as exp:
-    print(exp)
+    print('Not gonna hit this')
 
 # catching exception with content and cleanup
 try:
-    support = 0
-    test = 5 / support
+    divide_by_zero()
 except Exception as exp:
     print(exp)
 finally:
@@ -30,10 +34,9 @@ finally:
 
 # no need to catch exception. cleanup runs anyways
 try:
-    support = 1
-    test = 5 / support
+    divide_by_zero()
     print('no exception')
 except Exception as exp:
-    print(exp)
+    traceback.print_stack()
 finally:
     print('this will clean up when it succeeds')
