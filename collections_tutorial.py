@@ -15,6 +15,7 @@ sample_list = [1, 42, 'Mario','Luigi']
 type(sample_list)
 
 # Creating lists
+# lists can store heterogenous things in the list
 new_list = list()
 type(new_list)
 
@@ -23,14 +24,15 @@ new_list2 = []
 type(new_list2)
 
 # If we want to remove the whole list, we can
+# if you are super concerned with memory management
 del new_list
 del new_list2
 
 # How do we get the third element?
-sample_list[___]
+sample_list[2]
 
 # Let's change the third element
-sample_list[___] = 'Wario'
+sample_list[2] = 'Wario'
 sample_list
 
 # Let's change the last element with negative indexes
@@ -38,6 +40,7 @@ sample_list[-1] = "Waluigi"
 sample_list
 
 # Slicing Lists
+# syntax -> some_list[start:howfar:step]
 sample_list[2:]
 sample_list[-3:]
 
@@ -61,7 +64,7 @@ large_list[::-3] # Traverse backwards, getting every 3rd element
 
 # Tuples
 # We saw this in Session 1 when we passed a tuple of parameters to use with string formatting in the old style.
-formatted_string = f"My name is %s, and my favorite %s is %s." % ("Sarah","musical instrument","double bass")
+formatted_string = f"My name is %s, and my favorite %s is %s." % ("Sarah", "musical instrument", "double bass")
 print(formatted_string)
 
 # Sample tuple
@@ -107,10 +110,11 @@ print("Basket 1 == Basket 3? ", fruit_basket1 == fruit_basket3)
 print("Basket 1 == Basket 2? ",fruit_basket1 == fruit_basket2)
 
 # If we wanted to get the 2nd element of sample, what do we use?
-sample[___]
+sample[1]
 
 # Can we add scalar values to our tuple?
-sample = sample + 'more related data'
+# ANSWER: no we cant!
+# sample = sample + 'more related data'
 
 # What about this way?
 sample = sample + ('more related data',) # That ending comma makes a difference
@@ -121,7 +125,8 @@ sample += (12.3, True, 1e08, 'test') # We can use the += shorthand as seen in C#
 sample
 
 # Can we change the tuple's elements?
-sample[1] = (False,)
+# ANSWER: no we cant!
+# sample[1] = (False)
 
 # Tuples can be sliced just like lists
 # This makes it easier to create new tuples
@@ -129,16 +134,18 @@ sample[1] = (False,)
 # Large tuples
 large_tuple = (i for i in range(30))
 large_tuple
-large_tuple = (i for i in range(30),)
+large_tuple = (i for i in range(30))
 large_tuple = tuple([i for i in range(30)])
 large_tuple
 large_tuple[1::2]
 _list = [1,2,3,5,6]
 _list.append(9)
 _list
-large_tuple.append(9)
+# NOTE: appending stuff to tuples is not supported!
+# large_tuple.append(9)
 dir(tuple)
-large_tuple.__add__(9)
+# NOTE: appending stuff to tuples is not supported!
+# large_tuple.__add__(9)
 
 # Tuple math
 ta = (1,2,3)
@@ -146,7 +153,7 @@ tb = (4,5,6)
 ta + tb
 
 # Sequences and Ranges
-[for i in range(0,20)]
+# [for i in range(0,20)]
 [i for i in range(0,20)]
 [i+2 for i in range(0,20)]
 my_list = []
@@ -160,28 +167,31 @@ my_list
 _dict = {}
 _dict[ta+tb] = 5
 _dict
-_dict[_list] = 5
+# not working
+# _dict[_list] = 5
 _dict[(1,2,3,4,5,6)]
 _dict.keys()
-_dict.keys()[0]
+# NOTE: does not support indexing
+# _dict.keys()[0]
 _dict.keys()
-_dict.keys().iterable()
+# NOTE: dict keys does not have attribute 'iterable'
+# _dict.keys().iterable()
 [ i for i in _dict.keys()][0]
 
 # Named Tuples
 # Allows us to use names for indexes with our tuples
-from collections import namedtuple
-# Parameters - name of class, space delimited elements
-Person = namedtuple('Person', 'name fave_thing fave_thing_value')
-
-print('Type of Person:', type(Person))
-# Show the help (Intellisense) from PyCharm here!
-ilya = Person(name='Ilya', fave_thing="animal", fave_thing_value="donkeylobster")
-print('\nRepresentation:', ilya)
-
-sarah = Person(name='Sarah', fave_thing="football team", fave_thing_value="Cleveland Browns")
-print('\nGetting a field\'s value:', sarah.fave_thing)
-
-print('\nFields by index:')
-for p in [ ilya,sarah ]:
-    print('%s has a favorite %s which is %s' % p)
+# from collections import namedtuple
+# # Parameters - name of class, space delimited elements
+# Person = namedtuple('Person', 'name fave_thing fave_thing_value')
+#
+# print('Type of Person:', type(Person))
+# # Show the help (Intellisense) from PyCharm here!
+# ilya = Person(name='Ilya', fave_thing="animal", fave_thing_value="donkeylobster")
+# print('\nRepresentation:', ilya)
+#
+# sarah = Person(name='Sarah', fave_thing="football team", fave_thing_value="Cleveland Browns")
+# print('\nGetting a field\'s value:', sarah.fave_thing)
+#
+# print('\nFields by index:')
+# for p in [ ilya,sarah ]:
+#     print('%s has a favorite %s which is %s' % p)
