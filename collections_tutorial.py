@@ -1,4 +1,7 @@
+from collections import namedtuple
+
 # This is our introduction to collections
+# for what its worth, the debugger doesn't work for old timey bazman
 
 # Lists
 my_music_collection = "Lindsey Stirling,David Garrett,2CELLOS,Dave Matthews Band,Alexey Igudesman,Brigid's Cross"
@@ -11,7 +14,7 @@ for music_artist in my_music_artists:
     print(music_artist)
 
 # Another sample list
-sample_list = [1, 42, 'Mario','Luigi']
+sample_list = [1, 42, 'Mario', 'Luigi']
 type(sample_list)
 
 # Creating lists
@@ -68,7 +71,8 @@ formatted_string = f"My name is %s, and my favorite %s is %s." % ("Sarah", "musi
 print(formatted_string)
 
 # Sample tuple
-sample = (123,'test',123.456)
+# again, heterogenous
+sample = (123, 'test', 123.456)
 sample
 type(sample)
 
@@ -85,23 +89,24 @@ del new_tup
 del new_tup2
 
 # Fun with repetition and concatenation
-really_funny = ('NA',)*8 + (' batman',)
+# the comma indicates the tuple is one member
+really_funny = ('NA',)*8 + ('batman',)
 really_funny
 
 # Check membership
 'ha' in really_funny # This is a boolean expression
 
 for word in really_funny:
-    print(word)
+    print(word.capitalize()) if word == 'batman' else print(word.lower())
 
 # Compare tuples
-fruit_basket1 = ('apples','pears','blueberries')
-fruit1, fruit2, fruit3 = fruit_basket1 #unpack a tuple into single variables
+fruit_basket1 = ('apples', 'pears', 'blueberries')
+fruit1, fruit2, fruit3 = fruit_basket1 # unpack a tuple into single variables
 print(fruit1)
 print(fruit2)
 print(fruit3)
-fruit_basket2 = ('apples','oranges','blueberries')
-fruit_basket3 = ('apples','pears','blueberries')
+fruit_basket2 = ('apples', 'oranges', 'blueberries')
+fruit_basket3 = ('apples', 'pears', 'blueberries')
 
 # Compare two with known same elements
 print("Basket 1 == Basket 3? ", fruit_basket1 == fruit_basket3)
@@ -115,6 +120,7 @@ sample[1]
 # Can we add scalar values to our tuple?
 # ANSWER: no we cant!
 # sample = sample + 'more related data'
+
 
 # What about this way?
 sample = sample + ('more related data',) # That ending comma makes a difference
@@ -138,7 +144,7 @@ large_tuple = (i for i in range(30))
 large_tuple = tuple([i for i in range(30)])
 large_tuple
 large_tuple[1::2]
-_list = [1,2,3,5,6]
+_list = [1 ,2, 3, 5, 6]
 _list.append(9)
 _list
 # NOTE: appending stuff to tuples is not supported!
@@ -148,28 +154,30 @@ dir(tuple)
 # large_tuple.__add__(9)
 
 # Tuple math
-ta = (1,2,3)
-tb = (4,5,6)
+ta = (1, 2, 3)
+tb = (4, 5, 6)
 ta + tb
+# turns into (1,2,3,4,5,6)
 
 # Sequences and Ranges
-# [for i in range(0,20)]
-[i for i in range(0,20)]
-[i+2 for i in range(0,20)]
+[i for i in range(0, 20)]
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+[i+2 for i in range(0, 20)]
+# [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 my_list = []
-for i in range(0,20):
-  my_list.append(i)
+for i in range(0, 20):
+    my_list.append(i)
 my_list
-[i for i in range(0,20)]
-[i*2+1 for i in range(0,20)]
+[i*2+1 for i in range(0, 20)]
+# [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 
 # Dictionaries - C# Dictionaries, Java HashMaps
 _dict = {}
-_dict[ta+tb] = 5
+_dict[ta + tb] = 5
 _dict
 # not working
 # _dict[_list] = 5
-_dict[(1,2,3,4,5,6)]
+_dict[(1, 2, 3, 4, 5, 6)]
 _dict.keys()
 # NOTE: does not support indexing
 # _dict.keys()[0]
@@ -180,18 +188,27 @@ _dict.keys()
 
 # Named Tuples
 # Allows us to use names for indexes with our tuples
-# from collections import namedtuple
-# # Parameters - name of class, space delimited elements
-# Person = namedtuple('Person', 'name fave_thing fave_thing_value')
-#
-# print('Type of Person:', type(Person))
-# # Show the help (Intellisense) from PyCharm here!
-# ilya = Person(name='Ilya', fave_thing="animal", fave_thing_value="donkeylobster")
-# print('\nRepresentation:', ilya)
-#
-# sarah = Person(name='Sarah', fave_thing="football team", fave_thing_value="Cleveland Browns")
-# print('\nGetting a field\'s value:', sarah.fave_thing)
-#
-# print('\nFields by index:')
-# for p in [ ilya,sarah ]:
-#     print('%s has a favorite %s which is %s' % p)
+
+# Parameters - name of class, space delimited elements
+Person = namedtuple('Person', 'name fave_thing fave_thing_value')
+
+print('Type of Person:', type(Person))
+# Show the help (Intellisense) from PyCharm here!
+ilya = Person(name='Ilya', fave_thing="animal", fave_thing_value="donkeylobster")
+print('\nRepresentation:', ilya)
+
+sarah = Person(name='Sarah', fave_thing="football team", fave_thing_value="Cleveland Browns")
+print('\nGetting a field\'s value:', sarah.fave_thing)
+
+print('\nFields by index:')
+for p in [ilya, sarah]:
+    print('%s has a favorite %s which is %s' % p)
+
+# lets talk about set
+# need to have unique items
+some_set = {1, 2, 3, 4, 1} # the trailing one is truncated
+
+alphabet_set = {'a', 'c', 'd', 'b'}
+# sets dont have a concept of order
+
+new_set = {1, 2, 'test', 3.4, True}
