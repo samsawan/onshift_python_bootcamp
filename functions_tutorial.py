@@ -40,4 +40,3 @@ def default_function(first, second='second', *args, **kwargs):
 
 
 default_function('hello')
-default_function('hello', 'third')
