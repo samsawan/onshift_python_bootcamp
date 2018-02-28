@@ -1,0 +1,55 @@
+- dunder methods
+	- short for 'double underscore'
+	- __init__, __repr__, __str__, etc
+	- sometimes referred to magic or special methods
+	- examples
+		- __init__
+			- object constructor
+		- __len__
+			- length
+			- support if calling len()
+		- __str__
+			- python equivalent of toString
+			- informal
+			- takes precedence over the __repr__
+		- __repr__
+			- formal representation of toString()
+			- use this one if you have to choose between the two
+		- __getitem__
+			- support slicing notation obeject[start:stop]
+		- __eq__
+			- determine equality
+		- __add__
+			- overlaod the + operator
+	- dunder methods are typically private, not public
+	- '_' (single underscore) is private-ish
+
+- grouping code
+	- obviously dont put everything in one file
+	- DRY
+		- copy once? meh thats fine
+		- twice? factor that nonsense out
+	- packages
+		- directories
+		- contain __init__.py
+		- contain modules
+			- modules can be classes, functions, global variables
+	- imports are defined by the following (generally)
+		- import packagename.modulename
+		- import modulename
+		- from (modulename OR packagename.modulename) import (module OR class OR subpackage)
+		- use import * sparingly (only import what you need!)
+	- __init__.py for packages
+		- indicates dir should be treated as package
+		- essentially configuration
+		- used to expose classes at package level
+		- the __all__ variable can contain a list of modules in a subpackage to be used in 'import *' is used
+
+- locating modules
+	- order:
+		- cwd
+		- PYTHONPATH
+		- default python path
+
+- what are classes
+	- a way to organize code related to an idea of a thing
