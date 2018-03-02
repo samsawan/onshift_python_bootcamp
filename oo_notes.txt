@@ -53,3 +53,14 @@
 
 - what are classes
 	- a way to organize code related to an idea of a thing
+	- properties vs attributes
+		- accessed the same way (object.attribute or object.property)
+		- properties are decorated with the @property decorator
+		- properties are used when you have logic behind your setter
+
+- inheritance
+	- overriding just happens; no special annotations needed
+	- way to group similar code and functionality
+
+- abstract base class
+	- cant instantiate it
