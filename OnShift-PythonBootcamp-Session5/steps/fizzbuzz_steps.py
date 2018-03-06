@@ -2,6 +2,7 @@ from behave import *
 
 use_step_matcher("re")
 
+
 @given("I have a number (?P<input_num>.+)")
 def step_impl(context, input_num):
     """
